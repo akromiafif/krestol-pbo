@@ -2,9 +2,9 @@
 #include <string>
 #include "../inc/Engimon.h"
 #include "skill/Skill.cpp"
+
 using namespace std;
 using namespace ns_Engimon;
-
 
 
 Engimon::Engimon() {
@@ -142,6 +142,11 @@ int Engimon::getCountSkill() {
 Skill* Engimon::getAllSkill() {
   return this->listSkill;
 }
+
+bool Engimon::getIsActive() {
+  return this->isActive;
+}
+
 /*  ===================== GETTERS ===================== */
 
 
@@ -186,6 +191,10 @@ void Engimon::info(){
   //   cout << "Skill 1:" << endl;
   //   this->listSkill->infoSkill();
   // }
+}
+
+void Engimon::setIsActive(bool active) {
+  this->isActive = active;
 }
 
 /*  ===================== SETTERS ===================== */

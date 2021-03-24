@@ -28,6 +28,7 @@ namespace ns_Engimon {
       int maxCumulativeExp;
       int level;
       int experience;
+      bool isActive;
 
     public:
       /* default ctor: name = Ratatamon, parentNames = JAVmon, species = Sangemon, level = 0, experience = 0, cumulativeExperience = 0*/
@@ -57,6 +58,7 @@ namespace ns_Engimon {
       int getExperience();
       int getCountSkill();
       Skill* getAllSkill();
+      bool getIsActive();
 
       // Setter
       void setName(string name);
@@ -66,6 +68,7 @@ namespace ns_Engimon {
       void setLevel(int level);
       void setExperience(int experience);
       void info();
+      void setIsActive(bool active);
   };
 } /* Engimon::Engimon */
 

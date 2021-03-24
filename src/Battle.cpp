@@ -1,23 +1,62 @@
-
-#include <string>
-
 #include "Battle.h"
+#include "Skill.h"
+#include <iostream>
 
 using namespace std;
 using namespace ns_Engimon;
 
-Battle::Battle(Engimon player,Engimon musuh)
-    : player(player), musuh(musuh)
+Battle::Battle(Engimon& player,Engimon& musuh)
+{   
+    this->player = player;
+    this->musuh = musuh;
+    // ini perhitungan elemen advantagenya gimana
+    double eladvplayer = -999; 
+    double eladvmusuh = -999;
+    // for semua elemen player
+        // for semua elemen musuh
+            // double calcplayer = calculateElemenAdv(elemenplayer[i],elemenmusuh[j]);
+            // double calcmusuh = calculateElemenAdv(elemenmusuh[j],elemenplayer[i]);
+
+            // if (calcplayer > eladvplayer)
+                // eladvplayer = calcplayer;
+            // if (calcmusuh > eladvmusuh)
+                // eladvmusuh = calcmusuh;
+
+    double power_player = player.getLevel() * eladvplayer + sumSkill(player);
+    double power_musuh = musuh.getLevel() * eladvmusuh + sumSkill(musuh);  
+    cout << "Power Level Player : " << power_player << endl;
+    cout << "Power Level Musuh : " << power_musuh << endl;
+
+    // engimon yang kalah, mati
+    // kalau power sama, yang menang player
+    if (power_player >= power_musuh)
+    {
+        // player menang, musuh mati hapus dari map(?)
+        // kalo inventory cukup, player mendapat engimon lawan, masukin ke inventory
+        // active engimon dapet experience points, besaran bebas (50), mending statik
+        player.addExp(50);
+        // dapet random skill item yg kompatibel dengan engimon musuh
+    
+    }
+    else
+    {
+        // player mati, hapus player dari inventory
+    }
+}
+
+Battle::~Battle() 
 {
 }
 
-Battle::~Battle() {
-}
-
-float Battle::countPower(Engimon e1) {
-    float elAdvantage;
-    float power = e1.getLevel() * elAdvantage;
-    // skill masih banyak kurang jd ini belom bisa
+double Battle::sumSkill(Engimon& E) 
+{   
+    double sum = 0;
+    Skill* allSkill = E.getAllSkill();
+    for (int i=0; i<E.getCountSkill(); i++) 
+    {
+        sum = sum + (allSkill[i].getBasePower() * allSkill[i].getMasteryLevel());
+    }
+    return sum;
 }
 
 int Battle::idElement(string namaElemen) {
@@ -37,13 +76,13 @@ int Battle::idElement(string namaElemen) {
         id = -1;
     return id;
 }
-float Battle::elemenAdv(string elemen1, string elemen2) {
+double Battle::calculateElemenAdv(string elemenPlayer, string elemenMusuh) {
     // fire 0, water 1, electric 2,
     // ground 3, ice 4
-    int el1 = idElement(elemen1);
-    int el2 = idElement(elemen2);
+    int el1 = idElement(elemenPlayer);
+    int el2 = idElement(elemenMusuh);
 
-    float chart[5][5] = {
+    double chart[5][5] = {
         {1,0,1,0.5,2},
         {2,1,0,1,1},
         {1,2,1,0,1.5},

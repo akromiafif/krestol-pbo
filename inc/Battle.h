@@ -17,10 +17,10 @@ namespace ns_Engimon {
         Engimon musuh;
 
     public:
-        Battle(Engimon,Engimon);
+        Battle(Engimon&,Engimon&);
         ~Battle();
-        float countPower(Engimon);
-        float elemenAdv(std::string, std::string);
+        double sumSkill(Engimon&);
+        double calculateElemenAdv(std::string, std::string);
         int idElement(std::string);
     };
 
