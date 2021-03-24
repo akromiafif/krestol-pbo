@@ -4,8 +4,8 @@
 #define PLAYER_HPP
 
 #include <string>
-#include "tubes1-oop/inc/Engimon.h"
-#include "tubes1-oop/inc/skill/Skill.h"
+#include "../inc/Engimon.h"
+#include "../inc/skill/Skill.h"
 #include "Inventory.h"
 
 class Player{

@@ -5,9 +5,9 @@
 // #include "tubes1-oop/inc/element.h"
 // #include "tubes1-oop/src/element.cpp"
 #include "../inc/skill/Skill.h"
+#include "../inc/Player.h"
 #include "../src/skill/skill.cpp"
 #include "Inventory.cpp"
-#include "Player.h"
 
 using namespace std;
 
