@@ -48,7 +48,7 @@ void Inventory<T1, T2>::addEngimon(T1* item){
             items1[item]++;
             CurrentCapacity++;
         }
-        cout << "Berhasil menambahkan Engimon " << item->getName() << " ke Inventory!" << endl;
+        cout << "Berhasil menambahkan Engimon " << item->getSkillName() << " ke Inventory!" << endl;
     }
 }
 
