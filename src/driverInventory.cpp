@@ -51,5 +51,8 @@ int main(){
 
     cout << "Kapasitas inventory sekarang adalah " << Inven.getCurrentCapacity() << endl;
 
+    Inven.printSkill();
+    Inven.printEngimon();
+    
     return 0;
 }
