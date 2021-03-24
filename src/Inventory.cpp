@@ -145,3 +145,19 @@ void Inventory<T1, T2>::printInfo(){
         cout << "    [" << x.first->getName() << "] : " << x.second << endl;
     }
 }
+
+template<class T1, class T2>
+void Inventory<T1, T2>::printEngimon(){
+    cout << "List Engimon :" << endl;
+    for(auto& x: items1){
+        cout << "  [" << x.first->getName() << "]" << endl;
+    }
+}
+
+template<class T1, class T2>
+void Inventory<T1, T2>::printSkill(){
+    cout << "List Skill :" << endl;
+    for(auto& x: items2){
+        cout << "  [" << x.first->getName() << "] : " << x.second << endl;
+    }
+}
