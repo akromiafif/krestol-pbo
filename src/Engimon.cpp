@@ -80,8 +80,17 @@ Engimon& Engimon::operator=(const Engimon& engimon) {
 }
 
 void Engimon::levelUp() {
-  if (experience % 100 == 0) {
-    level++;
+  int lvlmaks = this->getMaxCumulativeExp() / 100;
+  int x = this->getExperience();
+  if (x < this->getMaxCumulativeExp()) {
+    if ((x/100) > this->getLevel()) {
+      this->level = (x/100);
+      cout << "Engimon " << this->getName() << " naik ke level " << this->getLevel() << endl;
+    }
+  }
+  else
+  {
+    cout << "Engimon " << this->getName() << " naik ke level " << lvlmaks << endl;
   }
 }
 
@@ -90,7 +99,7 @@ void Engimon::addExp(int exp) {
 }
 
 bool Engimon::isDead() {
-  return this->experience == this->maxCumulativeExp;
+  return this->experience >= this->maxCumulativeExp;
 }
 
 void Engimon::addSkill(Skill skill) {

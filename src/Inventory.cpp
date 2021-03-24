@@ -86,7 +86,7 @@ void Inventory<T1, T2>::removeEngimon(T1* item){
         // item ada di inventory
         items1[item]--; // delete item 1
         CurrentCapacity--;
-        cout << "Berhasil membuang Engimon " << item->getName() << " sebanyak 1 dari Inventory!" << endl;
+        cout << "Berhasil membuang Engimon " << item->getName() << " dari Inventory!" << endl;
         // kasus itemnya jadi 0
         if (found->second == 0){
             items1.erase(found);

@@ -3,28 +3,24 @@
 #define BATTLE_HPP
 
 #include <string>
-
+#include "Player.h"
 #include "Engimon.h"
-#include "Skill.h"
+using namespace std;
+using namespace ns_Engimon;
 
-namespace ns_Engimon {
+class Battle
+{
+private:
+    /* data */
+    Engimon active;
+    Engimon musuh;
 
-    class Battle
-    {
-    private:
-        /* data */
-        Engimon player;
-        Engimon musuh;
-
-    public:
-        Battle(Engimon&,Engimon&);
-        ~Battle();
-        double sumSkill(Engimon&);
-        double calculateElemenAdv(std::string, std::string);
-        int idElement(std::string);
-    };
-
-} /* Engimon::Battle */
-
+public:
+    Battle(Engimon*,Engimon*,Inventory<Engimon, Skill>*);
+    ~Battle();
+    double sumSkill(Engimon&);
+    double calculateElemenAdv(std::string, std::string);
+    int idElement(std::string);
+};
 
 #endif

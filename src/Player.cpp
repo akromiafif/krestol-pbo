@@ -5,10 +5,12 @@
 // #include "tubes1-oop/inc/element.h"
 // #include "tubes1-oop/src/element.cpp"
 #include "../inc/skill/Skill.h"
-#include "../inc/Player.h"
 #include "../src/skill/skill.cpp"
+#include "../inc/Player.h"
 #include "Inventory.cpp"
+#include "../inc/Battle.h"
 
+// using namespace ns_Engimon;
 using namespace std;
 
 // ctor
@@ -53,6 +55,7 @@ void Player::beginBreeding(Engimon* Engi1, Engimon* Engi2){
     // kresna isi
 }
 
-void Player::beginBattle(){
+void Player::beginBattle(Engimon* active, Engimon* musuh){
     // ahan isi
+    Battle(Inven,active,musuh);
 }

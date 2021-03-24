@@ -1,46 +1,72 @@
-#include "Battle.h"
-#include "Skill.h"
+#include "../inc/Battle.h"
+#include "../inc/skill/Skill.h"
+#include "../inc/Inventory.h"
+// #include "../src/skill/skill.cpp" ini jangan sampe diinclude malah rusak
+#include "Inventory.cpp"
+
 #include <iostream>
+#include <stdlib.h>
 
 using namespace std;
 using namespace ns_Engimon;
+using namespace ns_Skill;
 
-Battle::Battle(Engimon& player,Engimon& musuh)
+Battle::Battle(Engimon* active, Engimon* musuh, Inventory<Engimon, Skill>* Inven)
 {   
-    this->player = player;
-    this->musuh = musuh;
+    this->active = *active;
+    this->musuh = *musuh;
+    
     // ini perhitungan elemen advantagenya gimana
-    double eladvplayer = -999; 
+    double eladvactive = -999; 
     double eladvmusuh = -999;
-    // for semua elemen player
+    // for semua elemen active
         // for semua elemen musuh
-            // double calcplayer = calculateElemenAdv(elemenplayer[i],elemenmusuh[j]);
-            // double calcmusuh = calculateElemenAdv(elemenmusuh[j],elemenplayer[i]);
+            // double calcactive = calculateElemenAdv(elemenactive[i],elemenmusuh[j]);
+            // double calcmusuh = calculateElemenAdv(elemenmusuh[j],elemenactive[i]);
 
-            // if (calcplayer > eladvplayer)
-                // eladvplayer = calcplayer;
+            // if (calcactive > eladvactive)
+                // eladvactive = calcactive;
             // if (calcmusuh > eladvmusuh)
                 // eladvmusuh = calcmusuh;
 
-    double power_player = player.getLevel() * eladvplayer + sumSkill(player);
-    double power_musuh = musuh.getLevel() * eladvmusuh + sumSkill(musuh);  
-    cout << "Power Level Player : " << power_player << endl;
+    // double power_active = (*active).getLevel() * eladvactive + sumSkill((*active));
+    // double power_musuh = (*musuh).getLevel() * eladvmusuh + sumSkill((*musuh));  
+
+    // ini contoh doang, nanti di hapus
+    // Inventory<Engimon, Skill> Inven;
+
+    double power_active = 1;
+    double power_musuh = 0;
+    cout << "Power Level Player : " << power_active << endl;
     cout << "Power Level Musuh : " << power_musuh << endl;
 
-    // engimon yang kalah, mati
-    // kalau power sama, yang menang player
-    if (power_player >= power_musuh)
+    Engimon* cmusuh = new Engimon(this->musuh);
+    // engimon yang kalah, mati. kalau power sama, yang menang active
+    if (power_active >= power_musuh)
     {
-        // player menang, musuh mati hapus dari map(?)
-        // kalo inventory cukup, player mendapat engimon lawan, masukin ke inventory
-        // active engimon dapet experience points, besaran bebas (50), mending statik
-        player.addExp(50);
+        cout << active->getName() << " menang!" << endl;
+        // active menang, musuh mati hapus dari map(?)
+        // kalo inventory cukup, active mendapat engimon lawan, masukin ke inventory
+        if (!Inven->isInventoryFull())
+            Inven->addEngimon(cmusuh);
+        // active engimon dapet experience points 50, kalau isdead bunuh
+        active->addExp(50);
+        active->levelUp();
+        if (active->isDead())
+            // hapus dari inventory sama destruct
+            cout << "Engimon " << active->getName() << " sudah mencapai batasnya! Katakan selamat tinggal..." << endl;
+            Inven->removeEngimon(active);
         // dapet random skill item yg kompatibel dengan engimon musuh
-    
+        Skill* skillMusuh = cmusuh->getAllSkill();
+        int random = rand() % cmusuh->getCountSkill();
+        if (!Inven->isInventoryFull())
+            Inven->addSkill(&skillMusuh[random]);
     }
     else
     {
-        // player mati, hapus player dari inventory
+        // active mati, hapus active dari inventory
+        cout << active->getName() << " kalah!" << endl;
+        Inven->removeEngimon(active);
     }
 }
 
@@ -90,4 +116,34 @@ double Battle::calculateElemenAdv(string elemenPlayer, string elemenMusuh) {
         {0,1,0.5,2,1}
     };
     return chart[el1][el2];
+}
+
+int main() { // buat ngetes doang
+    Inventory<Engimon, Skill> Inven;
+    // bikin engimon
+    Engimon e1("e1", "spes1", 320, "sukarno");
+    Engimon e2("e2", "spes2", 50, "agayeff");
+    Inven.addEngimon(&e1);
+    Inven.addEngimon(&e2);
+
+    // bikin skill
+    Skill Glowup("Glowup", 100, 0);
+    Inven.addSkill(&Glowup);
+
+    // masukin skill ke engimon e1
+    e1.addSkill(Glowup);
+    
+    
+    // menang, nambah xp terus level up
+    Engimon musuh1("musuh1", "spes1", 100, "sukarni");
+    Skill duarapi("duarapi", 80, 0);
+    musuh1.addSkill(duarapi);
+    Inven.printInfo();
+    Battle(&e1,&musuh1,&Inven);
+    Inven.printInfo();
+    // menang, nambah xp terus mati
+
+    // kalah
+    cout << "asu" << endl;
+    return 0;
 }

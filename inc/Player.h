@@ -5,8 +5,10 @@
 
 #include <string>
 #include "../inc/Engimon.h"
+#include "../src/Engimon.cpp"
 #include "../inc/skill/Skill.h"
 #include "Inventory.h"
+using namespace std;
 
 class Player{
     private:
@@ -14,19 +16,19 @@ class Player{
         int inputCommand(); // command input player
     protected:
         // inventory
-        Inventory<Engimon, Skill> Inven;
+        Inventory<ns_Engimon::Engimon, Skill> Inven;
     public:
         Player();
         ~Player();
-        void setActiveEngimon(Engimon* Engi); // set engimon active
+        void setActiveEngimon(ns_Engimon::Engimon*); // set engimon active
         void MovePlayer(); // bergerak di map ?
         void showEngimonList(); // menampilkan list engimon
         void showEngimonDetail(); // menampilkan data lengkap engimon
         void showSkillList(); // menampilkan list skill item
         void useSkilltoEngimon(); // menggunakan skill item ke Engimon
         void interacttoEngimon(); // interaksi dengan engimon active
-        void beginBreeding(Engimon* Engi1, Engimon* Engi2); // melaksanakan breeding
-        void beginBattle(); // melakukan battle
+        void beginBreeding(ns_Engimon::Engimon*, ns_Engimon::Engimon*); // melaksanakan breeding
+        void beginBattle(ns_Engimon::Engimon*, ns_Engimon::Engimon*); // melakukan battle
 };
 
 #endif
