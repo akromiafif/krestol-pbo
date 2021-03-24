@@ -19,6 +19,12 @@ Skill::Skill() {
   this->masteryLevel = 1;
 }
 
+Skill::Skill(const Skill& skill) {
+  this->skillName = skill.skillName;
+  this->basePower = skill.basePower;
+  this->masteryLevel = skill.masteryLevel;
+}
+
 Skill::Skill(string skillName, int basePower, int masteryLevel) {
   this->skillName = skillName;
   this->basePower = basePower;

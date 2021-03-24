@@ -29,6 +29,7 @@ namespace ns_Skill {
     
     public:
       Skill();
+      Skill(const Skill&);
       Skill(string skillName, int basePower, int masteryLevel);
       ~Skill();
 

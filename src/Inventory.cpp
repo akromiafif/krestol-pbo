@@ -48,7 +48,7 @@ void Inventory<T1, T2>::addEngimon(T1* item){
             items1[item]++;
             CurrentCapacity++;
         }
-        cout << "Berhasil menambahkan Engimon " << item->getSkillName() << " ke Inventory!" << endl;
+        cout << "Berhasil menambahkan Engimon " << item->getName() << " ke Inventory!" << endl;
     }
 }
 
@@ -71,7 +71,7 @@ void Inventory<T1, T2>::addSkill(T2* item){
             items2[item]++;
             CurrentCapacity++;
         }
-        cout << "Berhasil menambahkan Skill " << item->getName() << " ke Inventory!" << endl;
+        cout << "Berhasil menambahkan Skill " << item->getSkillName() << " ke Inventory!" << endl;
     }
 }
 
@@ -105,7 +105,7 @@ void Inventory<T1, T2>::removeSkill(T2* item){
         // item ada di inventory
         items2[item]--; // delete item 1
         CurrentCapacity--;
-        cout << "Berhasil membuang Skill " << item->getName() << " sebanyak 1 dari Inventory!" << endl;
+        cout << "Berhasil membuang Skill " << item->getSkillName() << " sebanyak 1 dari Inventory!" << endl;
         // kasus itemnya jadi 0
         if (found->second == 0){
             items2.erase(found);
@@ -142,7 +142,7 @@ void Inventory<T1, T2>::printInfo(){
     }
     cout << "  List Skill :" << endl;
     for(auto& x: items2){
-        cout << "    [" << x.first->getName() << "] : " << x.second << endl;
+        cout << "    [" << x.first->getSkillName() << "] : " << x.second << endl;
     }
 }
 
@@ -158,6 +158,6 @@ template<class T1, class T2>
 void Inventory<T1, T2>::printSkill(){
     cout << "List Skill :" << endl;
     for(auto& x: items2){
-        cout << "  [" << x.first->getName() << "] : " << x.second << endl;
+        cout << "  [" << x.first->getSkillName() << "] : " << x.second << endl;
     }
 }

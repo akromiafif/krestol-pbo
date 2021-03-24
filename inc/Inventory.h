@@ -28,6 +28,8 @@ class Inventory{
         int getCurrentCapacity();
         int getMaximumCapacity();
         void printInfo();
+        void printEngimon();
+        void printSkill();
 };
 
 #endif

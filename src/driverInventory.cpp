@@ -3,7 +3,6 @@
 // #include "tubes1-oop/inc/element.h"
 // #include "tubes1-oop/src/element.cpp"
 #include "../inc/skill/Skill.h"
-#include "../src/skill/skill.cpp"
 #include "Inventory.cpp"
 
 using namespace std;
