@@ -23,6 +23,7 @@ class Inventory{
         void removeEngimon(T1* item);
         void removeSkill(T2* item);
         // getter
+        void displayEngimonInfo();
         unordered_map<T1*, int> getItemEngimon();
         unordered_map<T2*, int> getItemSkill();
         int getCurrentCapacity();

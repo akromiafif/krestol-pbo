@@ -114,6 +114,25 @@ void Inventory<T1, T2>::removeSkill(T2* item){
 }
 
 template<class T1, class T2>
+void Inventory<T1, T2>::displayEngimonInfo(){
+    string name;
+    bool temp;
+    cout << "Masukkan nama Engimon: ";
+    cin >> name;
+
+    temp = false;
+    for(auto& x: items1){
+        if (x.first->getName() == name){
+            // gua butuh akses ke Engimon sesuatu(name, .., .., ..)
+            temp = true;
+        }
+    }
+    if (!temp){
+        cout << "Tidak ada Engimon dengan nama " << name << " di inventory!" << endl;
+    }
+}
+
+template<class T1, class T2>
 unordered_map<T1*, int> Inventory<T1, T2>::getItemEngimon(){
     return items1;
 }
