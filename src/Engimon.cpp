@@ -102,25 +102,54 @@ bool Engimon::isDead() {
   return this->experience >= this->maxCumulativeExp;
 }
 
-void Engimon::addSkill(Skill skill) {
-  if (!this->isSkillExist(skill)) {
-    if (this->countSkill <= 4) {
-      this->listSkill[this->countSkill] = skill;
-      this->countSkill++;
-    } else {
-      cout << "Skill udah penuh" << endl;
-      Skill* newSkill = new Skill(skill);
-    }
+bool Engimon::addSkill(Skill skill) {
+  bool isSuccessAdd = false;
+  if (this->countSkill < 4) {
+    this->listSkill[this->countSkill] = skill;
+    this->countSkill++;
+
+    isSuccessAdd = true;
   } else {
-    cout << "Skill sudah ada tidak bisa ditambah" << endl;
+    cout << "Skill udah penuh hanya bisa me-replace" << endl;
+    this->replaceSkill(skill);
+
+    isSuccessAdd = true;
   }
+
+  return isSuccessAdd;
 }
 
 void Engimon::replaceSkill(Skill skill) {
+  string name;
+  int index = -1;
+
   for (int i=0; i<this->countSkill; i++) {
-    cout << i+1 << " Nama Skill: "  << this->listSkill[i].getSkillName() << endl;
+    cout << i+1 << ". Nama Skill: "  << this->listSkill[i].getSkillName() << endl;
   }
   
+  cout << "Masukkan nama skill yg mau di replace: ";
+  cin >> name;
+
+  for (int i=0; i<this->countSkill; i++) {
+    if (name == this->listSkill[i].getSkillName()) {
+      index = i;
+      break;
+    }
+  }
+
+  if (index != -1) {
+    Skill* newSkill = new Skill(skill);
+    this->listSkill[index] = *newSkill;
+    cout << "Berhasil me-replace skill " << skill.getSkillName() << endl;
+    cout << endl;
+    cout << endl;
+    cout << endl;
+  } else {
+    cout << "Skill dengan nama " << name << " tidak ditemukan";
+    cout << endl;
+    cout << endl;
+    cout << endl;
+  }
 }
 
 bool Engimon::isSkillExist(Skill skill) {

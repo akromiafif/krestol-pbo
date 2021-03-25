@@ -45,7 +45,7 @@ namespace ns_Engimon {
       void levelUp();
       void addExp(int exp);
       bool isDead();
-      void addSkill(Skill skill);
+      bool addSkill(Skill skill);
       void learnSkill();
       Skill checkSkill();
       bool isSkillExist(Skill skill);

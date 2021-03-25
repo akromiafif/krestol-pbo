@@ -16,11 +16,21 @@ int main(){
     Engimon roy("roy", "Suhartomon", 200, "denira");
     Engimon koloMon("koloMon", "Suhartomon", 200, "denira");
     Engimon sugoMon("sugoMon", "Suhartomon", 200, "denira");
+
     Skill Glowup("Glowup", 100, 0);
     Skill duarapi("duarapi", 80, 0);
     Skill jasjus("jasjus", 230, 0);
     Skill Kohl("Kohl", 150, 0);
     Skill Starss("Starss", 50, 0);
+
+    // mamaMon.addSkill(Glowup);
+    mamaMon.addSkill(duarapi);
+    mamaMon.addSkill(jasjus);
+    mamaMon.addSkill(Kohl);
+    mamaMon.addSkill(jasjus);
+    mamaMon.addSkill(Starss);
+
+    mamaMon.info();
 
     cout << "Kapasitas maksimum inventory adalah " << Inven.getMaximumCapacity() << endl;
     cout << "Kapasitas inventory sekarang adalah " << Inven.getCurrentCapacity() << endl;
@@ -30,6 +40,7 @@ int main(){
     Inven.addEngimon(&roy);
     Inven.addEngimon(&koloMon);
     Inven.addEngimon(&sugoMon);
+
     Inven.addSkill(&Glowup);
     Inven.addSkill(&duarapi);
     Inven.addSkill(&jasjus);
@@ -57,7 +68,7 @@ int main(){
     roy9.addSkill(jasjus);
     roy9.addSkill(Glowup);
     roy.addSkill(duarapi);
-    roy9.addSkill(jasjus); // ini masih masuk skillnya padahal udh ada
+    roy9.addSkill(Starss); // ini masih masuk skillnya padahal udh ada
     // sama error pas skillnya udah 4 gua tambahin 1 skill lagi ni dibawah
     // roy9.addSkill(Starss);
 
