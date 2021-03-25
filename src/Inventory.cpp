@@ -124,6 +124,7 @@ void Inventory<T1, T2>::displayEngimonInfo(){
     for(auto& x: items1){
         if (x.first->getName() == name){
             // gua butuh akses ke Engimon sesuatu(name, .., .., ..)
+            x.first->info();
             temp = true;
         }
     }

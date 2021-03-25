@@ -52,6 +52,8 @@ int main(){
 
     Inven.printSkill();
     Inven.printEngimon();
+
+    Inven.displayEngimonInfo();
     
     return 0;
 }

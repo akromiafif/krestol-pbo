@@ -53,6 +53,7 @@ int main(int argc, char const *argv[]) {
   cout << endl;
   cout << endl;
   Skill* pokeMonAllSkill = pokeMon.getAllSkill();
+
   for (int i=0; i<pokeMon.getCountSkill(); i++) {
     cout << "Skill " << i+1 << ": " << endl;
     pokeMonAllSkill[i].getBasePower() *pokeMonAllSkill[i].getMasteryLevel();
