@@ -116,14 +116,23 @@ void Inventory<T1, T2>::removeSkill(T2* item){
 template<class T1, class T2>
 void Inventory<T1, T2>::displayEngimonInfo(){
     string name;
+    int count;
     bool temp;
     cout << "Masukkan nama Engimon: ";
     cin >> name;
 
+    count = 0;
     temp = false;
     for(auto& x: items1){
         if (x.first->getName() == name){
-            // gua butuh akses ke Engimon sesuatu(name, .., .., ..)
+            count++;
+        }
+    }
+    cout << "Terdapat " << count << " Engimon dengan nama " << name << " di inventory!" << endl;
+    cout << "Detail: " << endl << endl;
+
+    for(auto& x: items1){
+        if (x.first->getName() == name){
             x.first->info();
             temp = true;
         }

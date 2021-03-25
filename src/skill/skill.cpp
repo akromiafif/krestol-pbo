@@ -38,9 +38,9 @@ Skill::~Skill() {
 }
 
 void Skill::infoSkill() {
-  cout << "skillName: " << this->getSkillName() << endl;
-  cout << "basePower: " << this->getBasePower() << endl;
-  cout << "masteryLevel: " << this->getMasteryLevel() << endl;
+  cout << "skillName    : " << this->getSkillName() << endl;
+  cout << "basePower    : " << this->getBasePower() << endl;
+  cout << "masteryLevel : " << this->getMasteryLevel() << endl;
   cout << endl;
 }
 
