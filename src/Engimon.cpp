@@ -103,9 +103,36 @@ bool Engimon::isDead() {
 }
 
 void Engimon::addSkill(Skill skill) {
-  this->listSkill[this->countSkill] = skill;
-  this->countSkill++;
+  if (!this->isSkillExist(skill)) {
+    if (this->countSkill <= 4) {
+      this->listSkill[this->countSkill] = skill;
+      this->countSkill++;
+    } else {
+      cout << "Skill udah penuh" << endl;
+      Skill* newSkill = new Skill(skill);
+    }
+  } else {
+    cout << "Skill sudah ada tidak bisa ditambah" << endl;
+  }
 }
+
+void Engimon::replaceSkill(Skill skill) {
+  for (int i=0; i<this->countSkill; i++) {
+    cout << i+1 << " Nama Skill: "  << this->listSkill[i].getSkillName() << endl;
+  }
+  
+}
+
+bool Engimon::isSkillExist(Skill skill) {
+  for (int i=0; i<this->countSkill; i++) {
+    if (this->listSkill->getSkillName() == skill.getSkillName()) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 
 void Engimon::learnSkill() {
   cout << "All Possible Skill" << endl;

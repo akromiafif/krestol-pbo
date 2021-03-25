@@ -48,6 +48,8 @@ namespace ns_Engimon {
       void addSkill(Skill skill);
       void learnSkill();
       Skill checkSkill();
+      bool isSkillExist(Skill skill);
+      void replaceSkill(Skill skill);
 
       // Getter
       string getName();
