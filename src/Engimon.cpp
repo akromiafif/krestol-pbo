@@ -212,21 +212,24 @@ void Engimon::setExperience(int experience) {
 }
 
 void Engimon::info(){
-  cout << "Name: " << this->getName() << endl;
-  cout << "parentName: " << this->getParentName() << endl;
-  cout << "species: " << this->getSpecies() << endl;
-  cout << "maxCumulativeExp: " << this->getMaxCumulativeExp() << endl;
-  cout << "level: " << this->getLevel() << endl;
-  cout << "experience: " << this->getExperience() << endl;
-  cout << "\n\n";
-  cout << "Skill Engimon" <<endl;
+  cout << "Name             : " << this->getName() << endl;
+  cout << "parentName       : " << this->getParentName() << endl;
+  cout << "species          : " << this->getSpecies() << endl;
+  cout << "maxCumulativeExp : " << this->getMaxCumulativeExp() << endl;
+  cout << "level            : " << this->getLevel() << endl;
+  cout << "experience       : " << this->getExperience() << endl;
+  cout << "Skill Engimon    : " << this->countSkill << endl;
   for (int i = 0;i<this->countSkill;i++){
-    this->listSkill[i].infoSkill();
+    cout << "  " << (i+1) << ".  ";
+    cout << "skillName    : " << this->listSkill[i].getSkillName() << endl;
+    cout << "      basePower    : " << this->listSkill[i].getBasePower() << endl;
+    cout << "      masteryLevel : " << this->listSkill[i].getMasteryLevel() << endl;
   }
   // for (int i=0; i<this->getCountSkill(); i++) {
   //   cout << "Skill 1:" << endl;
   //   this->listSkill->infoSkill();
   // }
+  cout << endl;
 }
 
 void Engimon::setIsActive(bool active) {

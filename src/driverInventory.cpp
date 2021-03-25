@@ -20,6 +20,7 @@ int main(){
     Skill duarapi("duarapi", 80, 0);
     Skill jasjus("jasjus", 230, 0);
     Skill Kohl("Kohl", 150, 0);
+    Skill Starss("Starss", 50, 0);
 
     cout << "Kapasitas maksimum inventory adalah " << Inven.getMaximumCapacity() << endl;
     cout << "Kapasitas inventory sekarang adalah " << Inven.getCurrentCapacity() << endl;
@@ -50,8 +51,17 @@ int main(){
 
     cout << "Kapasitas inventory sekarang adalah " << Inven.getCurrentCapacity() << endl;
 
-    Inven.printSkill();
-    Inven.printEngimon();
+    Engimon roy9("roy", "Karls", 200, "roxyy");
+
+    roy9.addSkill(Kohl);
+    roy9.addSkill(jasjus);
+    roy9.addSkill(Glowup);
+    roy.addSkill(duarapi);
+    roy9.addSkill(jasjus); // ini masih masuk skillnya padahal udh ada
+    // sama error pas skillnya udah 4 gua tambahin 1 skill lagi ni dibawah
+    // roy9.addSkill(Starss);
+
+    Inven.addEngimon(&roy9);
 
     Inven.displayEngimonInfo();
     
